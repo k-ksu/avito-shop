@@ -19,7 +19,7 @@ func (t *AvitoShopAPI) APIBuyItemGet(w http.ResponseWriter, r *http.Request) {
 	item := mux.Vars(r)["item"]
 
 	if err = t.shop.BuyItem(r.Context(), user, item); err != nil {
-		if errors.Is(err, errs.ErrNotEnoughMoney) {
+		if errors.Is(err, errs.ErrNotEnoughMoney) || errors.Is(err, errs.ErrNoSuchMerch) {
 			helper.WithError(w, http.StatusBadRequest, err.Error())
 
 			return

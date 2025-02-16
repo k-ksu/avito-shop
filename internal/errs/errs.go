@@ -13,3 +13,6 @@ var ErrNotEnoughMoney = errors.New("not enough money")
 
 // ErrUserNotExists ...
 var ErrUserNotExists = errors.New("user does not exist")
+
+// ErrNoSuchMerch ...
+var ErrNoSuchMerch = errors.New("no such merch")

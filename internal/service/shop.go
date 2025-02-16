@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
 	"github.com/k-ksu/avito-shop/internal/errs"
@@ -165,6 +166,10 @@ func (s *Shop) GetMerch(ctx context.Context, item string) (model.Merch, error) {
 
 	merch, err := s.merchRepo.ItemByName(ctx, item)
 	if err != nil {
+		if errors.Is(err, errs.ErrNoRows) {
+			return model.Merch{}, errs.ErrNoSuchMerch
+		}
+
 		return model.Merch{}, fmt.Errorf("merchRepo.ItemByName: %w", err)
 	}
 
