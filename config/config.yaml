@@ -1,0 +1,12 @@
+app:
+  name: 'avito-shop'
+  version: '1.0.0'
+  token_ttl: 60h
+
+http:
+  host: '0.0.0.0'
+  port: '8080'
+  swagger_addr: '127.0.0.1:8080'
+
+postgres:
+  pool_max: 2
